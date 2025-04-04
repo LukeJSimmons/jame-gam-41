@@ -22,5 +22,5 @@ func create_color():
 	color = Color(randf_range(0,1), randf_range(0,1), randf_range(0,1))
 
 func enter(player):
-	player.position = exit_door.exit_position.global_position
+wwwwwwwww	player.position = exit_door.exit_position.global_position
 	player.rotation.y = exit_door.exit_position.rotation.y
