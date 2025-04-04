@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bdeqltvkbli42" path="res://scenes/rooms/door_rooms/door_room_1.tscn" id="4_tbgi4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
-vertices = PackedVector3Array(-1, -0.5, -38.625, -1.25, -0.5, -39.125, -4.25, -0.5, -39.125, -4.25, -0.5, -30.875, 4.25, -0.5, -30.875, 4.25, -0.5, -39.125, 18, -0.5, -3.625, 17.75, -0.5, -4.125, 14.75, -0.5, -4.125, 14.75, -0.5, 4.125, 23.25, -0.5, 4.125, 23.25, -0.5, -4.125)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 6), PackedInt32Array(6, 10, 9)]
+vertices = PackedVector3Array(-4.125, -0.5, -4.125, -4.125, -0.5, -1.125, -3.625, -0.5, -0.875, -0.875, -0.5, -3.625, -1.125, -0.5, -4.125, 4.125, -0.5, -4.125, -4.125, -0.5, 4.125, 4.125, -0.5, 4.125)
+polygons = [PackedInt32Array(4, 3, 0), PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 6), PackedInt32Array(6, 5, 7)]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jyhfs"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -24,20 +24,24 @@ glow_enabled = true
 [node name="main" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("1_0wfyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34)
 
 [node name="enemy" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 0, 1.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 player_path = NodePath("../player")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jyhfs")
 
-[node name="NavigationRegion3D_rooms_container#door_room_1" parent="." instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
+[node name="rooms_container" parent="NavigationRegion3D" instance=ExtResource("3_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="NavigationRegion3D_rooms_container#door_room_2" parent="." instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
+[node name="door_room_1" parent="NavigationRegion3D/rooms_container" instance=ExtResource("4_tbgi4")]
+
+[node name="door2" parent="NavigationRegion3D/rooms_container/door_room_1" index="6"]
+visible = true
+
+[node name="door4" parent="NavigationRegion3D/rooms_container/door_room_1" index="8"]
+color = Color(1, 0, 0, 1)
 
 [node name="env" type="Node3D" parent="."]
 
@@ -47,3 +51,5 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
 environment = SubResource("Environment_tefeu")
+
+[editable path="NavigationRegion3D/rooms_container/door_room_1"]
