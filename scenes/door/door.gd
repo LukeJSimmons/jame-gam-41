@@ -1,6 +1,6 @@
 extends Area3D
 
-@onready var mesh = $MeshInstance3D
+@onready var mesh = $door/door
 @onready var exit_position = $exit_position
 @onready var room = get_parent()
 @onready var rooms_container = room.get_parent()

@@ -36,16 +36,16 @@ use_collision = true
 material = SubResource("StandardMaterial3D_y7mhy")
 
 [node name="door" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.77106)
 
 [node name="door2" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.75128, 0, 0)
 visible = false
 
 [node name="door3" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.74902)
 visible = false
 
 [node name="door4" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.75269, 0, 0)
 visible = false
