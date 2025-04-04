@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdeqltvkbli42"]
+
+[ext_resource type="PackedScene" uid="uid://geipq4j2ewxu" path="res://scenes/door/door.tscn" id="1_fh4hj"]
+[ext_resource type="Script" uid="uid://ts02jh4a7ecp" path="res://scenes/rooms/room.gd" id="1_tpt68"]
+
+[node name="door_room_1" type="Node3D"]
+script = ExtResource("1_tpt68")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, -0.5, 0)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 0.0232307, -3.14843, 0, 0.49946, 0.146439, 0, 0.8, -4.98357)
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 0.0232307, -3.14843, 0, 0.49946, 0.146439, 0, 0.8, 5.11643)
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-07, -0.49946, -0.146439, 0, 0.0232307, -3.14843, 10, -2.18321e-08, -6.40104e-09, 5.05, 0.8, 0.066427)
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-07, -0.49946, -0.146439, 0, 0.0232307, -3.14843, 10, -2.18321e-08, -6.40104e-09, -5.05, 0.8, 0.0664265)
+use_collision = true
+
+[node name="door" parent="." instance=ExtResource("1_fh4hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
