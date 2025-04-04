@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://rpjvaq36gbt1"]
+
+[ext_resource type="Texture2D" uid="uid://dbh5f85mkt6dt" path="res://textures/tower_wall_color.png" id="1_u7csy"]
+[ext_resource type="Texture2D" uid="uid://dou211erw7my" path="res://textures/tower_wall roughness.png" id="2_g0nxq"]
+
+[resource]
+albedo_texture = ExtResource("1_u7csy")
+roughness_texture = ExtResource("2_g0nxq")
