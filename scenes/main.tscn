@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bybh68bpskh56"]
+[gd_scene load_steps=10 format=3 uid="uid://bybh68bpskh56"]
 
 [ext_resource type="PackedScene" uid="uid://bnh5rt7pofcft" path="res://scenes/player/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cf1sp82k6td8w" path="res://textures/texture_07.png" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://c2tflqn684bac" path="res://scenes/enemy/enemy.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cbj5rfwb1frk7" path="res://models/wizard_tower.fbx" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o5qli"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -55,3 +56,6 @@ size = Vector3(100, 1, 100)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999507, 6.15785)
 use_collision = true
 size = Vector3(5, 5, 1)
+
+[node name="wizard_tower" parent="." instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.118, -1.5, 100.005)
