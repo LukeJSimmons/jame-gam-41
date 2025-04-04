@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b4tv1lvswrdni"]
+
+[ext_resource type="Texture2D" uid="uid://d4l6467061e1b" path="res://textures/door_mat_color.png" id="1_rhrr2"]
+[ext_resource type="Texture2D" uid="uid://dnbqc2imt6rjl" path="res://textures/door_mat_metallic.png" id="2_683m4"]
+
+[resource]
+albedo_texture = ExtResource("1_rhrr2")
+metallic = 1.0
+metallic_texture = ExtResource("2_683m4")
