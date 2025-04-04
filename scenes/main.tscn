@@ -1,18 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfewqog2j05q0"]
+[gd_scene load_steps=9 format=3 uid="uid://cfewqog2j05q0"]
 
 [ext_resource type="PackedScene" uid="uid://bnh5rt7pofcft" path="res://scenes/player/player.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://c2tflqn684bac" path="res://scenes/enemy/enemy.tscn" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://33rhh8ckrmn5" path="res://scenes/rooms.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://33rhh8ckrmn5" path="res://scenes/rooms_container.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bdeqltvkbli42" path="res://scenes/rooms/door_rooms/door_room_1.tscn" id="4_tbgi4"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
+vertices = PackedVector3Array(-1, -0.5, -38.625, -1.25, -0.5, -39.125, -4.25, -0.5, -39.125, -4.25, -0.5, -30.875, 4.25, -0.5, -30.875, 4.25, -0.5, -39.125, 18, -0.5, -3.625, 17.75, -0.5, -4.125, 14.75, -0.5, -4.125, 14.75, -0.5, 4.125, 23.25, -0.5, 4.125, 23.25, -0.5, -4.125)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 6), PackedInt32Array(6, 10, 9)]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jyhfs"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_tbgi4"]
+sky_material = SubResource("ProceduralSkyMaterial_jyhfs")
+
+[sub_resource type="Environment" id="Environment_tefeu"]
+background_mode = 2
+sky = SubResource("Sky_tbgi4")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="main" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34)
 
 [node name="enemy" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 0, 1.7)
+player_path = NodePath("../player")
 
-[node name="rooms_container" parent="." instance=ExtResource("3_jyhfs")]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_jyhfs")
+
+[node name="rooms_container" parent="NavigationRegion3D" instance=ExtResource("3_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="door_room_1" parent="rooms_container" instance=ExtResource("4_tbgi4")]
+[node name="door_room_1" parent="NavigationRegion3D/rooms_container" instance=ExtResource("4_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
+
+[node name="door" parent="NavigationRegion3D/rooms_container/door_room_1" index="5"]
+color = Color(1, 0, 0, 1)
+exit_door_path = NodePath("../../door_room_2/door")
+
+[node name="door_room_2" parent="NavigationRegion3D/rooms_container" instance=ExtResource("4_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
+
+[node name="door" parent="NavigationRegion3D/rooms_container/door_room_2" index="5"]
+color = Color(1, 0, 0, 1)
+exit_door_path = NodePath("../../door_room_1/door")
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_tefeu")
+
+[editable path="NavigationRegion3D/rooms_container/door_room_1"]
+[editable path="NavigationRegion3D/rooms_container/door_room_2"]
