@@ -9,7 +9,7 @@ var speed = 5.0
 const WALK_SPEED = 5.0
 const RUN_SPEED = 8.0
 
-const mouse_sens = 0.25
+const mouse_sens = 0.2
 
 var lerp_speed = 10.0
 
@@ -61,5 +61,4 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("door"):
-		print('enter')
 		area.enter(self)

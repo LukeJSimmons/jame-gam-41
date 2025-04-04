@@ -10,6 +10,9 @@ func _ready() -> void:
 	pass
 
 
-func generate_room():
+func generate_room(enter_door):
 	var new_room = room.instantiate()
-	
+	new_room.position = position + Vector3(10,0,0)
+	new_room.get_node('door').exit_door = enter_door
+	self.add_child(new_room)
+	return new_room
