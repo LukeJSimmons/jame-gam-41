@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://33rhh8ckrmn5"]
+
+[ext_resource type="Script" uid="uid://cv1ruwubbrpq6" path="res://scenes/rooms_container.gd" id="1_x2141"]
+
+[node name="rooms_container" type="Node3D"]
+script = ExtResource("1_x2141")
