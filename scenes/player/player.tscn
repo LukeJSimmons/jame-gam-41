@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8afob"]
 radius = 0.54272
 
-[node name="Player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D"]
 script = ExtResource("1_8afob")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
