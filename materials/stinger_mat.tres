@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bled37srmqgff"]
+
+[ext_resource type="Texture2D" uid="uid://d2ywivmuaey20" path="res://textures/stinger_mat_color.png" id="1_mbkkj"]
+[ext_resource type="Texture2D" uid="uid://rir6k6pg74l8" path="res://textures/stinger_mat_metallic.png" id="2_y56ta"]
+[ext_resource type="Texture2D" uid="uid://cp5fc4bkaj6dd" path="res://textures/stinger_mat_normal.png" id="3_stttw"]
+[ext_resource type="Texture2D" uid="uid://dhe818a0ch2qo" path="res://textures/stinger_mat_roughness.png" id="4_q28ny"]
+
+[resource]
+albedo_texture = ExtResource("1_mbkkj")
+metallic = 1.0
+metallic_texture = ExtResource("2_y56ta")
+roughness_texture = ExtResource("4_q28ny")
+normal_enabled = true
+normal_texture = ExtResource("3_stttw")
