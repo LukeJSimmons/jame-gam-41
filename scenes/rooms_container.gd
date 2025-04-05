@@ -29,7 +29,7 @@ func generate_room(enter_door):
 	return new_room
 
 func determine_room_type():
-	var rand_num = randi_range(0,1)
+	var rand_num = randi_range(0,10)
 	match rand_num:
 		0:
 			if !has_key_room:

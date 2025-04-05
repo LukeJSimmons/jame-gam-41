@@ -1,20 +1,15 @@
 extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
+@onready var player = get_parent().get_node("player")
 
-const STARTING_SPEED = 1.0
-const SPEED_MULTIPLIER = 1.0
+const STARTING_SPEED = 2.0
+const SPEED_MULTIPLIER = 0.1
 
 var speed = STARTING_SPEED
-var player = null
 
 var targets = []
 
-@export var player_path: NodePath
-
-
-func _ready() -> void:
-	player = get_node(player_path)
 
 func _process(delta: float) -> void:
 	velocity = Vector3.ZERO
