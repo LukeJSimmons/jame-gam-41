@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dllss4k6qxitf"]
+
+[ext_resource type="Texture2D" uid="uid://s00afbjea58k" path="res://textures/candle_stick_mat_Base_color_1001.png" id="1_uuetd"]
+[ext_resource type="Texture2D" uid="uid://n62bhpka5r7p" path="res://textures/candle_stick_mat_Mixed_AO_1001.png" id="2_rt2s3"]
+[ext_resource type="Texture2D" uid="uid://qh5lcqins4r1" path="res://textures/candle_stick_mat_Metallic_1001.png" id="3_ptske"]
+[ext_resource type="Texture2D" uid="uid://cnok4n38duy1i" path="res://textures/candle_stick_mat_Normal_OpenGL_1001.png" id="4_ge2qm"]
+[ext_resource type="Texture2D" uid="uid://m6vnynd0gh88" path="res://textures/candle_stick_mat_Roughness_1001.png" id="5_pe8jq"]
+
+[resource]
+albedo_texture = ExtResource("1_uuetd")
+metallic = 1.0
+metallic_texture = ExtResource("3_ptske")
+roughness_texture = ExtResource("5_pe8jq")
+normal_enabled = true
+normal_texture = ExtResource("4_ge2qm")
+ao_enabled = true
+ao_texture = ExtResource("2_rt2s3")
