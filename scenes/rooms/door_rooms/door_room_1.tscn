@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdeqltvkbli42"]
+[gd_scene load_steps=9 format=3 uid="uid://bdeqltvkbli42"]
 
-[ext_resource type="PackedScene" uid="uid://geipq4j2ewxu" path="res://scenes/door/door.tscn" id="1_fh4hj"]
 [ext_resource type="Script" uid="uid://ts02jh4a7ecp" path="res://scenes/rooms/room.gd" id="1_tpt68"]
 [ext_resource type="Texture2D" uid="uid://cf1sp82k6td8w" path="res://textures/texture_07.png" id="2_nmowl"]
+[ext_resource type="PackedScene" uid="uid://c52rmd7lh01g1" path="res://models/rooms/room1.fbx" id="2_y7mhy"]
+[ext_resource type="PackedScene" uid="uid://b8p2fjej7r5g3" path="res://models/rooms/room3.fbx" id="4_y7mhy"]
+[ext_resource type="PackedScene" uid="uid://dgmiqclso1rvn" path="res://models/rooms/room2.fbx" id="5_ojidk"]
+[ext_resource type="PackedScene" uid="uid://b8ofju7ysy8dm" path="res://models/rooms/room4.fbx" id="7_wqo15"]
+[ext_resource type="PackedScene" uid="uid://bya1eyltex1c6" path="res://models/rooms/room5.fbx" id="8_20xi4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7mhy"]
 albedo_texture = ExtResource("2_nmowl")
@@ -10,42 +14,57 @@ albedo_texture = ExtResource("2_nmowl")
 [node name="door_room_1" type="Node3D"]
 script = ExtResource("1_tpt68")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, -0.5, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_y7mhy")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(10, 0, 0, 0, 0.0232307, -2.99676, 0, 0.49946, 0.139384, 0, 0.8, -5)
 use_collision = true
 material = SubResource("StandardMaterial3D_y7mhy")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(10, 0, 0, 0, 0.0232307, -2.99676, 0, 0.49946, 0.139384, 0, 0.8, 5)
 use_collision = true
 material = SubResource("StandardMaterial3D_y7mhy")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.37114e-07, -0.49946, -0.139384, 0, 0.0232307, -2.99676, 10, -2.18321e-08, -6.09269e-09, 5, 0.8, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_y7mhy")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.37114e-07, -0.49946, -0.139384, 0, 0.0232307, -2.99676, 10, -2.18321e-08, -6.09269e-09, -5, 0.8, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_y7mhy")
 
-[node name="door" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.77106)
+[node name="door_point1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.8)
 
-[node name="door2" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.75128, 0, 0)
+[node name="door_point2" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.8, 0, 0)
+
+[node name="door_point3" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.7)
+
+[node name="door_point4" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.7, 0, 0)
+
+[node name="room1" parent="." instance=ExtResource("2_y7mhy")]
 visible = false
 
-[node name="door3" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.74902)
+[node name="room2" parent="." instance=ExtResource("5_ojidk")]
 visible = false
 
-[node name="door4" parent="." instance=ExtResource("1_fh4hj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.75269, 0, 0)
+[node name="room3" parent="." instance=ExtResource("4_y7mhy")]
+visible = false
+
+[node name="room4" parent="." instance=ExtResource("7_wqo15")]
+visible = false
+
+[node name="room5" parent="." instance=ExtResource("8_20xi4")]
 visible = false

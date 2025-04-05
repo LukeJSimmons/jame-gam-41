@@ -17,7 +17,7 @@ ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_material = SubResource("ProceduralSkyMaterial_jyhfs")
 
 [sub_resource type="Environment" id="Environment_tefeu"]
-background_mode = 3
+background_mode = 2
 sky = SubResource("Sky_tbgi4")
 tonemap_mode = 2
 glow_enabled = true
@@ -27,11 +27,8 @@ glow_enabled = true
 [node name="player" parent="." instance=ExtResource("1_0wfyh")]
 enemy_path = NodePath("../enemy")
 
-[node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 41, 0)
-
 [node name="enemy" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 player_path = NodePath("../player")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -40,9 +37,15 @@ navigation_mesh = SubResource("NavigationMesh_jyhfs")
 [node name="rooms_container2" parent="NavigationRegion3D" instance=ExtResource("3_jyhfs")]
 
 [node name="door_room_1" parent="NavigationRegion3D/rooms_container2" instance=ExtResource("4_tbgi4")]
-num_of_doors = 1
 
 [node name="env" type="Node3D" parent="."]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
 environment = SubResource("Environment_tefeu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 41, 0)
