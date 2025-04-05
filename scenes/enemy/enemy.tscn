@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2tflqn684bac"]
+[gd_scene load_steps=7 format=3 uid="uid://c2tflqn684bac"]
 
 [ext_resource type="Script" uid="uid://ddp0keevfdjoq" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
 [ext_resource type="PackedScene" uid="uid://pt8t7lun735u" path="res://models/monster.fbx" id="2_a3pup"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4a83h"]
 radius = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_40wdo"]
+radius = 3.0
 
 [node name="enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_4a83h")
@@ -48,15 +51,15 @@ bones/33/rotation = Quaternion(-0.142589, -0.0217612, -0.236193, 0.960941)
 bones/34/rotation = Quaternion(0.0162101, 1.09081e-07, -0.315182, 0.948893)
 
 [node name="eyes_mesh" parent="monster/monster/Skeleton3D" index="0"]
-transform = Transform3D(0.01, 2.17693e-19, -1.06972e-20, 1.06973e-20, -0.000980404, -0.00995182, -2.17694e-19, 0.00995182, -0.000980404, 5.87532e-10, 0.0170641, 0.00923928)
+transform = Transform3D(0.01, 2.17693e-19, -1.06985e-20, 1.06957e-20, -0.000980409, -0.00995182, -2.17694e-19, 0.00995182, -0.000980408, 5.87532e-10, 0.0170641, 0.00923929)
 bone_idx = 4
 
 [node name="stinger_mesh_001" parent="monster/monster/Skeleton3D" index="1"]
-transform = Transform3D(0.00999996, 3.31784e-09, 6.02449e-09, 5.60249e-09, 0.00633569, 0.00773685, 4.94765e-09, -0.00773685, 0.00633569, 0.0200312, -0.0102365, 0.0379809)
+transform = Transform3D(0.00999996, 2.09548e-08, -9.83709e-09, 5.70435e-09, 0.0063357, 0.00773684, 2.94531e-08, -0.00773684, 0.00633571, 0.0200312, -0.0102365, 0.037981)
 bone_idx = 23
 
 [node name="stinger_mesh" parent="monster/monster/Skeleton3D" index="2"]
-transform = Transform3D(0.00999996, -2.21189e-09, -5.82077e-09, -5.76256e-09, 0.00633569, 0.00773685, -5.47152e-09, -0.00773685, 0.00633569, -0.0200312, -0.0102364, 0.0379809)
+transform = Transform3D(0.00999996, -2.03145e-08, 9.42964e-09, -4.83124e-09, 0.0063357, 0.00773684, -2.95113e-08, -0.00773684, 0.00633571, -0.0200312, -0.0102365, 0.037981)
 bone_idx = 28
 
 [node name="AnimationPlayer" parent="monster" index="1"]
@@ -79,6 +82,12 @@ volume_db = -8.0
 autoplay = true
 max_distance = 15.0
 
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_40wdo")
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 
 [editable path="monster"]

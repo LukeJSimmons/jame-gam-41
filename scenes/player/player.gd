@@ -20,6 +20,8 @@ var direction = Vector3.ZERO
 var entered_doors = []
 var enemy = null
 
+var has_key = false
+
 
 func _ready() -> void:
 	enemy = get_node(enemy_path)
@@ -57,7 +59,7 @@ func _physics_process(delta: float) -> void:
 
 
 func game_over():
-	pass
+	get_tree().quit()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -70,3 +72,6 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 		area.enter(self)
 		entered_doors.append(area)
 		enemy.targets.push_back(area)
+	elif area.is_in_group('key'):
+		has_key = true
+		area.queue_free()

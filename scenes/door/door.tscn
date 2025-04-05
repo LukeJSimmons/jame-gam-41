@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://geipq4j2ewxu"]
+[gd_scene load_steps=6 format=3 uid="uid://geipq4j2ewxu"]
 
 [ext_resource type="Script" uid="uid://bivspi06w41em" path="res://scenes/door/door.gd" id="1_bu3y2"]
 [ext_resource type="PackedScene" uid="uid://c5cea3glty3y2" path="res://models/door.fbx" id="2_odsy8"]
+[ext_resource type="PackedScene" uid="uid://dh2e0iffq2apt" path="res://models/lock.fbx" id="3_u3mo4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_08jtm"]
 size = Vector3(1.4, 3, 0.599609)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3mo4"]
+albedo_color = Color(0.768627, 0.262745, 0.282353, 1)
 
 [node name="door" type="Area3D" groups=["door"]]
 script = ExtResource("1_bu3y2")
@@ -16,7 +20,15 @@ shape = SubResource("BoxShape3D_08jtm")
 [node name="door" parent="." instance=ExtResource("2_odsy8")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
+[node name="lock" parent="." instance=ExtResource("3_u3mo4")]
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0.768414, 0.521889, 0.238978)
+visible = false
+
+[node name="Cube" parent="lock" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_u3mo4")
+
 [node name="exit_position" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 1.9)
 
 [editable path="door"]
+[editable path="lock"]

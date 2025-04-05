@@ -10,6 +10,8 @@ var hex_color
 
 var exit_door
 
+var is_locked = false
+
 
 func _ready() -> void:
 	mesh.set_surface_override_material(0, StandardMaterial3D.new())
@@ -20,20 +22,29 @@ func _ready() -> void:
 func _process(delta):
 	var new_color = mesh.get_surface_override_material(0)
 	new_color.albedo_color = color
+	$lock.visible = is_locked
 
 func create_color():
 	randomize()
 	var new_color = Global.doors.pop_at(randi_range(0,Global.doors.size()-1))
 	
 	if new_color == null:
-
 		queue_free()
 		return
+	
+	if !door_is_unique_in_room(new_color):
+		Global.doors.push_back(new_color)
+		return create_color()
 	
 	hex_color = new_color
 	color = Color.hex(new_color)
 
 func enter(player):
+	if is_locked:
+		if player.has_key:
+			player.game_over()
+		return
+	
 	if exit_door == null:
 		var new_room = rooms_container.generate_room(self)
 		
@@ -56,3 +67,11 @@ func check_for_partner_door():
 			door.exit_door = self
 			print('has partner')
 	print(rooms_container.doors)
+
+func door_is_unique_in_room(new_color):
+	var colors = []
+	
+	for door in room.doors:
+		colors.append(door.hex_color)
+	
+	return !colors.has(new_color)

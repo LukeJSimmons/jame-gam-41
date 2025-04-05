@@ -41,3 +41,8 @@ func _on_area_3d_area_entered(area):
 	if area.is_in_group("door"):
 		area.enter(self)
 		targets.pop_front()
+
+
+func _on_detection_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		targets = []
