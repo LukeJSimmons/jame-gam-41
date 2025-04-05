@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 @onready var head: Node3D = $Head
+
+@export var enemy_path: NodePath
  
 const JUMP_VELOCITY = 4.5
 
@@ -15,8 +17,12 @@ var lerp_speed = 10.0
 
 var direction = Vector3.ZERO
 
+var entered_doors = []
+var enemy = null
+
 
 func _ready() -> void:
+	enemy = get_node(enemy_path)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
@@ -51,7 +57,7 @@ func _physics_process(delta: float) -> void:
 
 
 func game_over():
-	print("AHSBDJABSJHD")
+	pass
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -62,3 +68,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("door"):
 		area.enter(self)
+		entered_doors.append(area)
+		enemy.targets.push_back(area)
