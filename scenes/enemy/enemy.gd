@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 
-const STARTING_SPEED = 2.0
+const STARTING_SPEED = 1.0
 const SPEED_MULTIPLIER = 1.0
 
 var speed = STARTING_SPEED
@@ -21,8 +21,10 @@ func _process(delta: float) -> void:
 	
 	if targets.is_empty():
 		nav_agent.set_target_position(player.global_transform.origin)
+		look_at(player.position)
 	else:
 		nav_agent.set_target_position(targets[0].global_transform.origin)
+		look_at(targets[0].position)
 	
 	var next_nav_point = nav_agent.get_next_path_position()
 	

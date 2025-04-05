@@ -1,13 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c2tflqn684bac"]
 
 [ext_resource type="Script" uid="uid://ddp0keevfdjoq" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
+[ext_resource type="PackedScene" uid="uid://pt8t7lun735u" path="res://models/monster.fbx" id="2_a3pup"]
+[ext_resource type="AudioStream" uid="uid://bio5cytf38fr4" path="res://audio/sound_effects/monster_clicking.wav" id="3_40wdo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_883im"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_883im"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_883im"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4a83h"]
 radius = 0.75
@@ -15,12 +12,59 @@ radius = 0.75
 [node name="enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_4a83h")
 
+[node name="monster" parent="." instance=ExtResource("2_a3pup")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="monster/monster" index="0"]
+bones/1/rotation = Quaternion(-0.353331, 4.34626e-18, -9.99362e-18, 0.935498)
+bones/3/rotation = Quaternion(-0.360923, -1.31753e-23, 8.0141e-17, 0.932596)
+bones/5/rotation = Quaternion(-0.450338, 5.89203e-17, -2.97181e-17, 0.892858)
+bones/6/rotation = Quaternion(-0.450338, 5.89203e-17, -2.97181e-17, 0.892858)
+bones/7/rotation = Quaternion(0.109883, -0.0210322, -0.217831, 0.969553)
+bones/8/rotation = Quaternion(-0.366147, 0.0468197, -0.151318, 0.916977)
+bones/9/rotation = Quaternion(0.257653, -0.0760236, -0.106349, 0.957353)
+bones/10/rotation = Quaternion(0.344135, 0.0670725, 0.279175, 0.893943)
+bones/11/rotation = Quaternion(-0.00413447, -1.33145e-05, 0.121158, 0.992625)
+bones/12/rotation = Quaternion(0.0919067, 0.0107504, 0.116559, 0.988864)
+bones/13/rotation = Quaternion(0.109883, 0.0210322, 0.217831, 0.969553)
+bones/14/rotation = Quaternion(-0.366147, -0.0468197, 0.151318, 0.916977)
+bones/15/rotation = Quaternion(0.257653, 0.0760237, 0.106349, 0.957353)
+bones/16/rotation = Quaternion(0.344135, -0.0670726, -0.279174, 0.893943)
+bones/17/rotation = Quaternion(-0.00413446, 1.33245e-05, -0.121158, 0.992625)
+bones/18/rotation = Quaternion(0.0919067, -0.0107504, -0.116558, 0.988864)
+bones/19/rotation = Quaternion(0.216088, 0.656683, 0.699918, -0.179412)
+bones/20/rotation = Quaternion(0.423121, -0.179487, -0.110243, 0.881249)
+bones/21/rotation = Quaternion(0.318233, -0.139351, 0.00798384, 0.937681)
+bones/22/rotation = Quaternion(0.295238, -0.112732, -0.125875, 0.940362)
+bones/24/rotation = Quaternion(-0.216088, 0.656683, 0.699918, 0.179412)
+bones/25/rotation = Quaternion(0.423121, 0.179487, 0.110243, 0.881249)
+bones/26/rotation = Quaternion(0.318233, 0.139351, -0.00798384, 0.937681)
+bones/27/rotation = Quaternion(0.295238, 0.112732, 0.125875, 0.940362)
+bones/29/rotation = Quaternion(0.690749, 0.038633, 0.698903, -0.181404)
+bones/30/rotation = Quaternion(-0.142589, 0.0217612, 0.236193, 0.960941)
+bones/31/rotation = Quaternion(0.0162101, -1.08499e-07, 0.315182, 0.948893)
+bones/32/rotation = Quaternion(-0.690749, 0.0386329, 0.698903, 0.181404)
+bones/33/rotation = Quaternion(-0.142589, -0.0217612, -0.236193, 0.960941)
+bones/34/rotation = Quaternion(0.0162101, 1.09081e-07, -0.315182, 0.948893)
+
+[node name="eyes_mesh" parent="monster/monster/Skeleton3D" index="0"]
+transform = Transform3D(0.01, 2.17693e-19, -1.06972e-20, 1.06973e-20, -0.000980404, -0.00995182, -2.17694e-19, 0.00995182, -0.000980404, 5.87532e-10, 0.0170641, 0.00923928)
+bone_idx = 4
+
+[node name="stinger_mesh_001" parent="monster/monster/Skeleton3D" index="1"]
+transform = Transform3D(0.00999996, 3.31784e-09, 6.02449e-09, 5.60249e-09, 0.00633569, 0.00773685, 4.94765e-09, -0.00773685, 0.00633569, 0.0200312, -0.0102365, 0.0379809)
+bone_idx = 23
+
+[node name="stinger_mesh" parent="monster/monster/Skeleton3D" index="2"]
+transform = Transform3D(0.00999996, -2.21189e-09, -5.82077e-09, -5.76256e-09, 0.00633569, 0.00773685, -5.47152e-09, -0.00773685, 0.00633569, -0.0200312, -0.0102364, 0.0379809)
+bone_idx = 28
+
+[node name="AnimationPlayer" parent="monster" index="1"]
+autoplay = "monster|walk"
+speed_scale = 2.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_883im")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_883im")
-mesh = SubResource("CapsuleMesh_883im")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -29,4 +73,12 @@ mesh = SubResource("CapsuleMesh_883im")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CapsuleShape3D_4a83h")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_40wdo")
+volume_db = -8.0
+autoplay = true
+max_distance = 15.0
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+
+[editable path="monster"]
