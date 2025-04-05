@@ -1,8 +1,7 @@
 extends CharacterBody3D
 
+@onready var enemy = get_parent().get_node('enemy')
 @onready var head: Node3D = $Head
-
-@export var enemy_path: NodePath
  
 const JUMP_VELOCITY = 4.5
 
@@ -18,13 +17,11 @@ var lerp_speed = 10.0
 var direction = Vector3.ZERO
 
 var entered_doors = []
-var enemy = null
 
 var has_key = false
 
 
 func _ready() -> void:
-	enemy = get_node(enemy_path)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:

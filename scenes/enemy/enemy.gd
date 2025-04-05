@@ -11,6 +11,11 @@ var speed = STARTING_SPEED
 var targets = []
 
 
+func _ready() -> void:
+	$Area3D/CollisionShape3D.disabled = true
+	visible = false
+	set_process(false)
+
 func _process(delta: float) -> void:
 	velocity = Vector3.ZERO
 	
@@ -41,3 +46,10 @@ func _on_area_3d_area_entered(area):
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		targets = []
+
+
+func _on_timer_timeout() -> void:
+	$Area3D/CollisionShape3D.disabled = false
+	visible = true
+	$AudioStreamPlayer3D.play()
+	set_process(true)
