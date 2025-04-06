@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dob3bo8enmail"]
+
+[ext_resource type="PackedScene" uid="uid://dewykoff6rb3p" path="res://models/decorations/candle_stick.fbx" id="1_60kyy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2huvt"]
+size = Vector3(0.105652, 0.879395, 0.156128)
+
+[node name="Decor3" type="Node"]
+
+[node name="candle_stick" parent="." instance=ExtResource("1_60kyy")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="candle_stick"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="candle_stick/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0224945, 0.432298, 0.00377399)
+shape = SubResource("BoxShape3D_2huvt")

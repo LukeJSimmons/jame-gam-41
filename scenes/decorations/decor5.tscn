@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dajg76vu4mmis"]
+
+[ext_resource type="PackedScene" uid="uid://b6hbvn1ygqfwf" path="res://models/decorations/jar.fbx" id="1_o3ns0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nn22c"]
+size = Vector3(0.64624, 0.758972, 0.53363)
+
+[node name="Decor5" type="Node"]
+
+[node name="jar" parent="." instance=ExtResource("1_o3ns0")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="jar"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jar/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0570068, 0.349884, -0.0750427)
+shape = SubResource("BoxShape3D_nn22c")

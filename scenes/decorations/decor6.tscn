@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://mkpe4thd5u7c"]
+
+[ext_resource type="PackedScene" uid="uid://xhqr8pk4ko4p" path="res://models/decorations/stool.fbx" id="1_fh65g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fh65g"]
+size = Vector3(0.414185, 0.516846, 0.341125)
+
+[node name="Decor6" type="Node"]
+
+[node name="stool" parent="." instance=ExtResource("1_fh65g")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stool"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stool/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0159302, 0.241577, -0.0112)
+shape = SubResource("BoxShape3D_fh65g")

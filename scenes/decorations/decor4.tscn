@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjhl8n3p2ilqi"]
+
+[ext_resource type="PackedScene" uid="uid://bo2h3h7q1upr4" path="res://models/decorations/gem.fbx" id="1_r7l1e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2v1me"]
+size = Vector3(0.358276, 0.21936, 0.361511)
+
+[node name="Decor4" type="Node"]
+
+[node name="gem" parent="." instance=ExtResource("1_r7l1e")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gem"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gem/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013855, 0.0899048, -0.0185852)
+shape = SubResource("BoxShape3D_2v1me")
