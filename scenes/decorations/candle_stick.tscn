@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bswrmfocvlfem"]
+
+[ext_resource type="PackedScene" uid="uid://dewykoff6rb3p" path="res://models/decorations/candle_stick.fbx" id="1_1hwqc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1hwqc"]
+height = 1.1
+radius = 0.1
+
+[node name="candle_stick" type="StaticBody3D"]
+
+[node name="candle_stick" parent="." instance=ExtResource("1_1hwqc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CylinderShape3D_1hwqc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16279, 0)
+light_color = Color(1, 0.72549, 0, 1)
+light_energy = 0.75
+omni_range = 1.0

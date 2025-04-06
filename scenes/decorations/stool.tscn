@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhr3818sdwm50"]
+
+[ext_resource type="PackedScene" uid="uid://xhqr8pk4ko4p" path="res://models/decorations/stool.fbx" id="1_n3jhn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n3jhn"]
+height = 0.4
+radius = 0.2
+
+[node name="stool" type="StaticBody3D"]
+
+[node name="stool" parent="." instance=ExtResource("1_n3jhn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("CylinderShape3D_n3jhn")

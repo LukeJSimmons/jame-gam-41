@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdeqltvkbli42"]
+[gd_scene load_steps=14 format=3 uid="uid://bdeqltvkbli42"]
 
 [ext_resource type="Script" uid="uid://ts02jh4a7ecp" path="res://scenes/rooms/room.gd" id="1_14vip"]
 [ext_resource type="Texture2D" uid="uid://cf1sp82k6td8w" path="res://textures/texture_07.png" id="2_kna73"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://b8p2fjej7r5g3" path="res://models/rooms/room3.fbx" id="5_p6mdq"]
 [ext_resource type="PackedScene" uid="uid://b8ofju7ysy8dm" path="res://models/rooms/room4.fbx" id="6_o3o0o"]
 [ext_resource type="PackedScene" uid="uid://bya1eyltex1c6" path="res://models/rooms/room5.fbx" id="7_hkvys"]
+[ext_resource type="PackedScene" uid="uid://bwmotmoowlqm0" path="res://scenes/decorations/bookshelf.tscn" id="8_kna73"]
+[ext_resource type="PackedScene" uid="uid://bswrmfocvlfem" path="res://scenes/decorations/candle_stick.tscn" id="9_7c2ba"]
+[ext_resource type="PackedScene" uid="uid://cjfmlvlmtfdau" path="res://scenes/decorations/box.tscn" id="10_dgyy1"]
+[ext_resource type="PackedScene" uid="uid://otaeeor4kghh" path="res://scenes/decorations/jar.tscn" id="11_p6mdq"]
+[ext_resource type="PackedScene" uid="uid://dhr3818sdwm50" path="res://scenes/decorations/stool.tscn" id="12_o3o0o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7mhy"]
 albedo_texture = ExtResource("2_kna73")
@@ -68,3 +73,74 @@ visible = false
 
 [node name="room5" parent="." instance=ExtResource("7_hkvys")]
 visible = false
+
+[node name="decorations" type="Node3D" parent="."]
+
+[node name="bookshelves" type="Node3D" parent="decorations"]
+visible = false
+
+[node name="bookshelf" parent="decorations/bookshelves" instance=ExtResource("8_kna73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0, -4.5)
+
+[node name="bookshelf2" parent="decorations/bookshelves" instance=ExtResource("8_kna73")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0, -4)
+
+[node name="bookshelf3" parent="decorations/bookshelves" instance=ExtResource("8_kna73")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 0, 4.3)
+
+[node name="bookshelf4" parent="decorations/bookshelves" instance=ExtResource("8_kna73")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.3, 0, 3.8)
+
+[node name="candle_sticks" type="Node3D" parent="decorations"]
+visible = false
+
+[node name="candle_stick" parent="decorations/candle_sticks" instance=ExtResource("9_7c2ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0, 1.9)
+
+[node name="candle_stick2" parent="decorations/candle_sticks" instance=ExtResource("9_7c2ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0, -4.4)
+
+[node name="candle_stick3" parent="decorations/candle_sticks" instance=ExtResource("9_7c2ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -2.1)
+
+[node name="candle_stick4" parent="decorations/candle_sticks" instance=ExtResource("9_7c2ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 0, 4.3)
+
+[node name="boxes" type="Node3D" parent="decorations"]
+visible = false
+
+[node name="box" parent="decorations/boxes" instance=ExtResource("10_dgyy1")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -2.8, 0, 4.2)
+
+[node name="box2" parent="decorations/boxes" instance=ExtResource("10_dgyy1")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 2.5, 0, -4)
+
+[node name="box3" parent="decorations/boxes" instance=ExtResource("10_dgyy1")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 2.4, 0.9, -4)
+
+[node name="jars" type="Node3D" parent="decorations"]
+visible = false
+
+[node name="jar" parent="decorations/jars" instance=ExtResource("11_p6mdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0, -3.2)
+
+[node name="jar2" parent="decorations/jars" instance=ExtResource("11_p6mdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 0, -3.1)
+
+[node name="jar3" parent="decorations/jars" instance=ExtResource("11_p6mdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -2.6)
+
+[node name="jar4" parent="decorations/jars" instance=ExtResource("11_p6mdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.4)
+
+[node name="stools" type="Node3D" parent="decorations"]
+visible = false
+
+[node name="stool" parent="decorations/stools" instance=ExtResource("12_o3o0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0, -2.1)
+
+[node name="stool2" parent="decorations/stools" instance=ExtResource("12_o3o0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -3.6)
+
+[node name="stool3" parent="decorations/stools" instance=ExtResource("12_o3o0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 3.8)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwmotmoowlqm0"]
+
+[ext_resource type="PackedScene" uid="uid://b7671fn0c2wpf" path="res://models/decorations/book_shelf.fbx" id="1_s8pci"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8pci"]
+size = Vector3(2.3, 3.1, 0.6)
+
+[node name="bookshelf" type="StaticBody3D"]
+
+[node name="book_shelf" parent="." instance=ExtResource("1_s8pci")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.23, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325, 1.55, -3.72529e-08)
+shape = SubResource("BoxShape3D_s8pci")

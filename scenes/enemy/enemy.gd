@@ -10,14 +10,19 @@ var speed = STARTING_SPEED
 
 var targets = []
 
+var current_room_id
+
 
 func _ready() -> void:
-	$Area3D/CollisionShape3D.disabled = true
+	$CollisionShape3D.disabled = true
 	visible = false
 	set_process(false)
 
 func _process(delta: float) -> void:
 	velocity = Vector3.ZERO
+	
+	if current_room_id == player.current_room_id:
+		targets = []
 	
 	if targets.is_empty():
 		nav_agent.set_target_position(player.global_transform.origin)
@@ -43,13 +48,8 @@ func _on_area_3d_area_entered(area):
 		targets.pop_front()
 
 
-func _on_detection_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		targets = []
-
-
 func _on_timer_timeout() -> void:
-	$Area3D/CollisionShape3D.disabled = false
+	$CollisionShape3D.disabled = false
 	visible = true
 	$AudioStreamPlayer3D.play()
 	set_process(true)

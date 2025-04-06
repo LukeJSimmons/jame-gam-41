@@ -13,6 +13,8 @@ var colors = {}
 var has_key_room = false
 var has_lock_room = false
 
+var room_id = 0
+
 
 func _ready():
 	doors = get_child(0).doors
@@ -23,6 +25,8 @@ func generate_room(enter_door):
 	
 	var new_room = determine_room_type()
 	new_room.position = rooms[-1].global_position + Vector3(10,0,0)
+	new_room.id = room_id
+	room_id += 1
 	self.add_child(new_room)
 	
 	nav.bake_navigation_mesh()

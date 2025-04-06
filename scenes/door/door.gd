@@ -5,6 +5,8 @@ extends Area3D
 @onready var room = get_parent()
 @onready var rooms_container = room.get_parent()
 
+var room_id
+
 var color
 var hex_color
 
@@ -57,6 +59,7 @@ func enter(player):
 		exit_door.exit_door = self
 		exit_door.hex_color = Global.doors.pop_at(Global.doors.find(hex_color))
 		exit_door.color = Color.hex(hex_color)
+	player.current_room_id = room_id
 	player.position = exit_door.exit_position.global_position
 	player.rotation.y += (exit_door.exit_position.global_rotation.y - global_rotation.y)
 
@@ -65,8 +68,6 @@ func check_for_partner_door():
 		if door.hex_color == hex_color && door.name != name:
 			exit_door = door
 			door.exit_door = self
-			print('has partner')
-	print(rooms_container.doors)
 
 func door_is_unique_in_room(new_color):
 	var colors = []

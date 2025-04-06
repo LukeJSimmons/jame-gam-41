@@ -20,6 +20,8 @@ var entered_doors = []
 
 var has_key = false
 
+var current_room_id
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
