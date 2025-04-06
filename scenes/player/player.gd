@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var enemy = get_parent().get_node('enemy')
 @onready var head: Node3D = $Head
+@onready var game_over_sound = $game_over
  
 const JUMP_VELOCITY = 4.5
 
@@ -20,7 +21,7 @@ var entered_doors = []
 
 var has_key = false
 
-var current_room_id
+var current_room_id = 0
 
 
 func _ready() -> void:
@@ -33,6 +34,7 @@ func _input(event: InputEvent) -> void:
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:
+	#print('Player: ' + str(current_room_id))
 	
 	if Input.is_action_pressed("run"):
 		speed = RUN_SPEED
@@ -58,7 +60,7 @@ func _physics_process(delta: float) -> void:
 
 
 func game_over():
-	get_tree().quit()
+	game_over_sound.play()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -74,3 +76,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	elif area.is_in_group('key'):
 		has_key = true
 		area.queue_free()
+
+
+func _on_game_over_finished() -> void:
+	get_tree().quit()

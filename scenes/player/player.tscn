@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnh5rt7pofcft"]
+[gd_scene load_steps=6 format=3 uid="uid://bnh5rt7pofcft"]
 
 [ext_resource type="Script" uid="uid://hycxtdfq80u1" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="AudioStream" uid="uid://dk0h6f0mink7y" path="res://audio/sound_effects/scream.mp3" id="2_dovo2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
 
@@ -35,5 +36,10 @@ debug_color = Color(0.980373, 0, 0.380223, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_8afob")
 
+[node name="game_over" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_dovo2")
+volume_db = 15.0
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="finished" from="game_over" to="." method="_on_game_over_finished"]

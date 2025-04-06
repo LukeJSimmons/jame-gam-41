@@ -10,7 +10,7 @@ var speed = STARTING_SPEED
 
 var targets = []
 
-var current_room_id
+var current_room_id = 0
 
 
 func _ready() -> void:
@@ -19,10 +19,8 @@ func _ready() -> void:
 	set_process(false)
 
 func _process(delta: float) -> void:
+	#print('Enemy: ' + str(current_room_id))
 	velocity = Vector3.ZERO
-	
-	if current_room_id == player.current_room_id:
-		targets = []
 	
 	if targets.is_empty():
 		nav_agent.set_target_position(player.global_transform.origin)
@@ -36,6 +34,9 @@ func _process(delta: float) -> void:
 	velocity = (next_nav_point - global_transform.origin).normalized() * speed
 	
 	move_and_slide()
+	
+	if current_room_id == player.current_room_id:
+		targets = []
 
 
 func increase_speed():

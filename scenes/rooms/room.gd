@@ -15,7 +15,7 @@ var door = preload("res://scenes/door/door.tscn")
 @export var type = 'door'
 @export var num_of_doors = randi_range(2,4)
 
-var id
+@export var id = 0
 
 var doors = []
 

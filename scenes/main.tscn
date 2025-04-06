@@ -30,6 +30,11 @@ glow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 41, 0)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="player"]
+stream = ExtResource("5_tbgi4")
+volume_db = -30.0
+autoplay = true
+
 [node name="enemy" parent="." instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
@@ -45,7 +50,3 @@ num_of_doors = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
 environment = SubResource("Environment_tefeu")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_tbgi4")
-autoplay = true

@@ -59,7 +59,8 @@ func enter(player):
 		exit_door.exit_door = self
 		exit_door.hex_color = Global.doors.pop_at(Global.doors.find(hex_color))
 		exit_door.color = Color.hex(hex_color)
-	player.current_room_id = room_id
+	player.current_room_id = exit_door.room_id
+	print('door id: ' + str(exit_door.room_id))
 	player.position = exit_door.exit_position.global_position
 	player.rotation.y += (exit_door.exit_position.global_rotation.y - global_rotation.y)
 
